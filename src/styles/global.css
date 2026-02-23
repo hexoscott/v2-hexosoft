@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+@theme {
+  --color-drift-silver: #dde3ea; /* drift silver — site background */
+  --color-ion-blue: #4fc3f7;     /* ion blue — primary foreground / accent */
+}
