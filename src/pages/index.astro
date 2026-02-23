@@ -212,6 +212,47 @@ const stages = [
 
       </div>
     </section>
+    <!-- Testimonials -->
+    <section class="relative py-32 px-6">
+      <div class="max-w-7xl mx-auto">
+
+        <div class="pl-6 md:pl-12 mb-16">
+          <p class="font-ui text-xs tracking-[0.35em] text-ion-blue uppercase mb-3">In their words</p>
+          <h2 class="font-display text-4xl font-bold text-slate-900 uppercase tracking-tight">What clients say</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-400/50">
+
+          <blockquote class="testimonial-card bg-drift-silver p-8 md:p-10 flex flex-col gap-8">
+            <p class="font-display text-xl font-semibold text-slate-900 leading-snug">
+              &ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — replace this with a real testimonial.&rdquo;
+            </p>
+            <footer class="mt-auto flex items-center gap-4">
+              <div class="w-8 h-px bg-ion-blue flex-shrink-0"></div>
+              <div>
+                <p class="font-display text-sm font-semibold text-slate-900 uppercase tracking-wide">Client Name</p>
+                <p class="font-ui text-xs text-slate-600 mt-0.5">Job Title, Company</p>
+              </div>
+            </footer>
+          </blockquote>
+
+          <blockquote class="testimonial-card bg-drift-silver p-8 md:p-10 flex flex-col gap-8">
+            <p class="font-display text-xl font-semibold text-slate-900 leading-snug">
+              &ldquo;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat — replace this with a real testimonial.&rdquo;
+            </p>
+            <footer class="mt-auto flex items-center gap-4">
+              <div class="w-8 h-px bg-ion-blue flex-shrink-0"></div>
+              <div>
+                <p class="font-display text-sm font-semibold text-slate-900 uppercase tracking-wide">Client Name</p>
+                <p class="font-ui text-xs text-slate-600 mt-0.5">Job Title, Company</p>
+              </div>
+            </footer>
+          </blockquote>
+
+        </div>
+
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -312,4 +353,13 @@ const stages = [
 
   .case-block:nth-child(1) { animation-delay: 0.1s; }
   .case-block:nth-child(2) { animation-delay: 0.22s; }
+
+  /* ─── Testimonial card entrance ─────────────────────────────── */
+  .testimonial-card {
+    opacity: 0;
+    animation: fade-up 0.55s ease forwards;
+  }
+
+  .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+  .testimonial-card:nth-child(2) { animation-delay: 0.22s; }
 </style>
