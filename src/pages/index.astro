@@ -1,24 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const features = [
+const stages = [
   {
     number: '01',
-    title: 'Lightning Fast',
+    title: 'Understand',
     description:
-      'Built for performance from the ground up. Every millisecond counts — we optimise ruthlessly so your users never wait.',
+      'We start by listening. Tell us where things are hard, slow, or just not working. Together we explore your problem from every angle before a single line of code is considered.',
   },
   {
     number: '02',
-    title: 'Beautifully Crafted',
+    title: 'Agree',
     description:
-      'Interfaces that feel inevitable. Great software is invisible — it just works, exactly when you need it.',
+      'We find the simplest solution that actually solves your problem — nothing more. We put it in front of you, talk it through, and only move forward when you\'re confident it\'s right.',
   },
   {
     number: '03',
-    title: 'Built to Scale',
+    title: 'Deliver',
     description:
-      'Architecture that grows with you. From zero to millions of users, the foundation holds without compromise.',
+      'We build it, then we work alongside you to make it stick. Real feedback shapes the result. You stay involved until the software works the way your business needs it to.',
   },
 ];
 ---
@@ -117,24 +117,24 @@ const features = [
       <div class="max-w-7xl mx-auto">
 
         <div class="pl-6 md:pl-12 mb-16">
-          <p class="font-ui text-xs tracking-[0.35em] text-ion-blue uppercase mb-3">What we do</p>
-          <h2 class="font-display text-4xl font-bold text-slate-900 uppercase tracking-tight">Capabilities</h2>
+          <p class="font-ui text-xs tracking-[0.35em] text-ion-blue uppercase mb-3">How we work</p>
+          <h2 class="font-display text-4xl font-bold text-slate-900 uppercase tracking-tight">The process</h2>
         </div>
 
         <!-- Cards: 1px gap between them acts as a divider -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-slate-400/50">
-          {features.map((feature) => (
+          {stages.map((stage) => (
             <article class="feature-card group bg-drift-silver hover:bg-slate-300/60 transition-colors duration-300 p-8 md:p-10">
               <span class="block font-display font-light leading-none text-slate-400 group-hover:text-ion-blue/30 transition-colors duration-300 mb-6 select-none"
                     style="font-size: 4rem;">
-                {feature.number}
+                {stage.number}
               </span>
               <div class="accent-bar w-8 h-px bg-ion-blue mb-6 transition-all duration-300"></div>
               <h3 class="font-display text-base font-semibold text-slate-900 uppercase tracking-widest mb-3">
-                {feature.title}
+                {stage.title}
               </h3>
               <p class="font-ui text-sm text-slate-700 leading-relaxed group-hover:text-slate-900 transition-colors duration-300">
-                {feature.description}
+                {stage.description}
               </p>
             </article>
           ))}
