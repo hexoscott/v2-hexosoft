@@ -52,6 +52,11 @@ const stages = [
             Testimonials
           </a>
         </li>
+        <li>
+          <a href="#contact" class="font-ui text-xs tracking-[0.15em] text-slate-700 hover:text-slate-900 uppercase transition-colors duration-200">
+            Contact
+          </a>
+        </li>
       </ul>
     </nav>
   </header>
@@ -91,6 +96,12 @@ const stages = [
               class="inline-flex items-center gap-2 px-8 py-3.5 border border-slate-500 hover:border-slate-700 text-slate-700 hover:text-slate-900 font-ui text-xs tracking-[0.2em] uppercase transition-all duration-200"
             >
               Learn More
+            </a>
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2 px-8 py-3.5 bg-ion-blue hover:bg-ion-blue/80 text-slate-900 font-ui text-xs tracking-[0.2em] uppercase transition-all duration-200"
+            >
+              Contact Us
             </a>
           </div>
         </div>
@@ -256,6 +267,102 @@ const stages = [
 
       </div>
     </section>
+
+    <div class="px-6" aria-hidden="true">
+      <div class="max-w-7xl mx-auto h-px" style="background: linear-gradient(to right, transparent, #4fc3f7 30%, #4fc3f7 70%, transparent);"></div>
+    </div>
+
+    <!-- Contact -->
+    <section id="contact" class="relative py-32 px-6">
+      <div class="max-w-7xl mx-auto">
+
+        <div class="pl-6 md:pl-12 mb-16">
+          <p class="font-ui text-sm font-semibold tracking-[0.2em] text-ion-blue uppercase mb-3">Get in touch</p>
+          <h2 class="font-display text-4xl font-bold text-slate-900 uppercase tracking-tight">Contact</h2>
+        </div>
+
+        <div class="pl-6 md:pl-12 max-w-2xl">
+
+          <!-- Form -->
+          <div id="contact-form-wrapper">
+            <form
+              id="contact-form"
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              class="space-y-6"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+
+              <div class="space-y-2">
+                <label for="name" class="font-ui text-sm font-medium text-slate-900 block">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Your name"
+                  class="w-full h-10 border border-slate-300 bg-slate-100 px-3 font-ui text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ion-blue focus:border-transparent transition-colors"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label for="email" class="font-ui text-sm font-medium text-slate-900 block">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="you@example.com"
+                  class="w-full h-10 border border-slate-300 bg-slate-100 px-3 font-ui text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ion-blue focus:border-transparent transition-colors"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label for="phone" class="font-ui text-sm font-medium text-slate-900 block">
+                  Phone <span class="text-slate-400 font-normal">(optional)</span>
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="+44 7700 000000"
+                  class="w-full h-10 border border-slate-300 bg-slate-100 px-3 font-ui text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ion-blue focus:border-transparent transition-colors"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label for="message" class="font-ui text-sm font-medium text-slate-900 block">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows="5"
+                  placeholder="Tell us about your problem..."
+                  class="w-full border border-slate-300 bg-slate-100 px-3 py-2 font-ui text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ion-blue focus:border-transparent transition-colors resize-none"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="inline-flex items-center gap-2 px-8 py-3.5 bg-ion-blue hover:bg-ion-blue/80 text-slate-900 font-ui text-xs tracking-[0.2em] uppercase transition-all duration-200 cursor-pointer"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <!-- Thank you (shown after submission) -->
+          <div id="contact-thankyou" class="hidden py-12 flex flex-col gap-6">
+            <h3 class="font-display text-2xl font-bold text-slate-900 uppercase">Thank you</h3>
+            <p class="font-ui text-sm text-slate-700 leading-relaxed max-w-sm">
+              Your message has been received. We'll be in touch shortly.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -268,6 +375,33 @@ const stages = [
     </div>
   </footer>
 </Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const wrapper = document.getElementById('contact-form-wrapper');
+  const thankyou = document.getElementById('contact-thankyou');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const params = new URLSearchParams();
+    formData.forEach((value, key) => params.append(key, value.toString()));
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
+      });
+    } catch {
+      // Submission may still succeed even if fetch throws (e.g. redirect)
+    } finally {
+      wrapper?.classList.add('hidden');
+      thankyou?.classList.remove('hidden');
+    }
+  });
+</script>
 
 <style>
   /* ─── Custom font families ─────────────────────────────────── */
