@@ -4,3 +4,20 @@
   --color-drift-silver: #dde3ea; /* drift silver — site background */
   --color-ion-blue: #4fc3f7;     /* ion blue — primary foreground / accent */
 }
+
+/* ─── Shared font families ──────────────────────────────────── */
+.font-display { font-family: 'Syne', sans-serif; }
+.font-ui      { font-family: 'JetBrains Mono', monospace; }
+
+/* ─── Dot-grid background ───────────────────────────────────── */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(79, 195, 247, 0.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ─── Nav backdrop blur ─────────────────────────────────────── */
+.nav-bar {
+  background-color: rgba(221, 227, 234, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}

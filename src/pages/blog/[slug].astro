@@ -1,0 +1,158 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Layout title={`${post.data.title} — Hexosoft`} description={post.data.description}>
+  <div class="dot-grid fixed inset-0 pointer-events-none" aria-hidden="true"></div>
+
+  <Nav />
+
+  <main class="pt-16">
+    <!-- Post header -->
+    <section class="relative px-6 py-32">
+      <div class="max-w-7xl mx-auto">
+        <div class="pl-6 md:pl-12">
+          <!-- Left accent line -->
+          <div
+            class="absolute left-0 md:left-6 top-1/4 bottom-1/4 w-px"
+            style="background: linear-gradient(to bottom, transparent, #4fc3f7 40%, #4fc3f7 60%, transparent);"
+            aria-hidden="true"
+          ></div>
+
+          <a
+            href="/blog"
+            class="inline-flex items-center gap-2 font-ui text-xs font-semibold tracking-[0.15em] text-slate-600 hover:text-slate-900 uppercase transition-colors duration-200 mb-10"
+          >
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+            </svg>
+            All posts
+          </a>
+
+          <p class="font-ui text-sm font-semibold tracking-[0.2em] text-ion-blue uppercase mb-6">
+            {formatDate(post.data.pubDate)}
+          </p>
+          <h1 class="font-display font-extrabold text-slate-900 uppercase leading-[0.9] tracking-tight"
+              style="font-size: clamp(2rem, 6vw, 5.5rem);">
+            {post.data.title}
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="px-6" aria-hidden="true">
+      <div class="max-w-7xl mx-auto h-px" style="background: linear-gradient(to right, transparent, #4fc3f7 30%, #4fc3f7 70%, transparent);"></div>
+    </div>
+
+    <!-- Post body -->
+    <section class="px-6 py-24">
+      <div class="max-w-7xl mx-auto">
+        <div class="pl-6 md:pl-12 max-w-2xl prose-content">
+          <Content />
+        </div>
+      </div>
+    </section>
+
+    <!-- Back link -->
+    <div class="px-6 pb-24">
+      <div class="max-w-7xl mx-auto pl-6 md:pl-12">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-3 font-ui text-xs font-semibold tracking-[0.15em] text-slate-600 hover:text-slate-900 uppercase transition-colors duration-200"
+        >
+          <div class="w-6 h-px bg-slate-400 group-hover:w-10 transition-all duration-200"></div>
+          Back to Blog
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-400/70 py-8 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <span class="font-display text-xs font-bold tracking-[0.2em] text-slate-600 uppercase">Hexosoft</span>
+      <p class="font-ui text-xs text-slate-600">
+        &copy; {new Date().getFullYear()} Hexosoft. All rights reserved.
+      </p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  /* ─── Prose content typography ──────────────────────────────── */
+  .prose-content :global(p) {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    line-height: 1.8;
+    color: #334155;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose-content :global(h2) {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: #0f172a;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose-content :global(h3) {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #0f172a;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose-content :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose-content :global(ul li) {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    line-height: 1.8;
+    color: #334155;
+    padding-left: 1.25rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  .prose-content :global(ul li::before) {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 0.5rem;
+    height: 1px;
+    background-color: #4fc3f7;
+  }
+
+  .prose-content :global(strong) {
+    font-weight: 600;
+    color: #0f172a;
+  }
+</style>
