@@ -1,13 +1,19 @@
 @import "tailwindcss";
 
+/* ─── Design tokens ─────────────────────────────────────────── */
 @theme {
   --color-drift-silver: #dde3ea; /* drift silver — site background */
   --color-ion-blue: #4fc3f7;     /* ion blue — primary foreground / accent */
 }
 
-/* ─── Shared font families ──────────────────────────────────── */
-.font-display { font-family: 'Syne', sans-serif; }
-.font-ui      { font-family: 'JetBrains Mono', monospace; }
+:root {
+  --font-display: 'Syne', sans-serif;
+  --font-ui: 'JetBrains Mono', monospace;
+}
+
+/* ─── Font family utilities ─────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-ui      { font-family: var(--font-ui); }
 
 /* ─── Dot-grid background ───────────────────────────────────── */
 .dot-grid {
@@ -20,4 +26,37 @@
   background-color: rgba(221, 227, 234, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+}
+
+/* ─── Component classes ─────────────────────────────────────── */
+@layer components {
+
+  /* Layout */
+  .page-section   { @apply relative py-32 px-6; }
+  .page-container { @apply max-w-7xl mx-auto; }
+  .section-indent { @apply pl-6 md:pl-12; }
+  .section-header { @apply pl-6 md:pl-12 mb-16; }
+
+  /* Typography */
+  .label-overline  { @apply text-sm font-semibold tracking-[0.2em] text-ion-blue uppercase; font-family: var(--font-ui); }
+  .section-heading { @apply text-4xl font-bold text-slate-900 uppercase tracking-tight; font-family: var(--font-display); }
+
+  /* Navigation */
+  .nav-link { @apply text-xs tracking-[0.15em] text-slate-700 hover:text-slate-900 uppercase transition-colors duration-200; font-family: var(--font-ui); }
+
+  /* Buttons */
+  .btn-primary   { @apply inline-flex items-center gap-2 px-8 py-3.5 bg-ion-blue hover:bg-ion-blue/80 text-slate-900 text-xs tracking-[0.2em] uppercase transition-all duration-200; font-family: var(--font-ui); }
+  .btn-secondary { @apply inline-flex items-center gap-2 px-8 py-3.5 border border-slate-500 hover:border-slate-700 text-slate-700 hover:text-slate-900 text-xs tracking-[0.2em] uppercase transition-all duration-200; font-family: var(--font-ui); }
+
+  /* Cards */
+  .card-grid    { @apply grid grid-cols-1 gap-px bg-slate-400/50; }
+  .card-surface { @apply bg-drift-silver hover:bg-slate-300/60 transition-colors duration-300 p-8 md:p-10; }
+
+  /* Forms */
+  .form-label { @apply text-sm font-medium text-slate-900 block; font-family: var(--font-ui); }
+  .form-input { @apply w-full border border-slate-300 bg-slate-100 px-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-ion-blue focus:border-transparent transition-colors; font-family: var(--font-ui); }
+
+  /* Footer */
+  .footer-brand { @apply text-xs font-bold tracking-[0.2em] text-slate-600 uppercase; font-family: var(--font-display); }
+  .footer-text  { @apply text-xs text-slate-600; font-family: var(--font-ui); }
 }

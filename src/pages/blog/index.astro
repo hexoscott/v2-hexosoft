@@ -18,19 +18,15 @@ const formatDate = (date: Date) =>
 
   <main class="pt-16">
     <!-- Header -->
-    <section class="relative px-6 py-32">
-      <div class="max-w-7xl mx-auto">
-        <div class="pl-6 md:pl-12">
-          <!-- Left accent line -->
+    <section class="page-section">
+      <div class="page-container">
+        <div class="section-indent">
           <div
             class="absolute left-0 md:left-6 top-1/4 bottom-1/4 w-px"
             style="background: linear-gradient(to bottom, transparent, #4fc3f7 40%, #4fc3f7 60%, transparent);"
             aria-hidden="true"
           ></div>
-
-          <p class="font-ui text-sm font-semibold tracking-[0.2em] text-ion-blue uppercase mb-6">
-            Hexosoft
-          </p>
+          <p class="label-overline mb-6">Hexosoft</p>
           <h1 class="font-display font-extrabold text-slate-900 uppercase leading-[0.88] tracking-tight mb-8"
               style="font-size: clamp(3rem, 8vw, 7rem);">
             Blog
@@ -44,22 +40,17 @@ const formatDate = (date: Date) =>
 
     <!-- Divider -->
     <div class="px-6" aria-hidden="true">
-      <div class="max-w-7xl mx-auto h-px" style="background: linear-gradient(to right, transparent, #4fc3f7 30%, #4fc3f7 70%, transparent);"></div>
+      <div class="page-container h-px" style="background: linear-gradient(to right, transparent, #4fc3f7 30%, #4fc3f7 70%, transparent);"></div>
     </div>
 
     <!-- Post listing -->
-    <section class="px-6 py-32">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-slate-400/50">
+    <section class="page-section">
+      <div class="page-container">
+        <div class="card-grid md:grid-cols-3">
           {posts.map((post) => (
-            <a
-              href={`/blog/${post.id}`}
-              class="post-card group bg-drift-silver hover:bg-slate-300/60 transition-colors duration-300 p-8 md:p-10 flex flex-col gap-6"
-            >
+            <a href={`/blog/${post.id}`} class="post-card group card-surface flex flex-col gap-6">
               <div>
-                <p class="font-ui text-xs text-ion-blue font-semibold mb-4">
-                  {formatDate(post.data.pubDate)}
-                </p>
+                <p class="label-overline text-xs mb-4">{formatDate(post.data.pubDate)}</p>
                 <h2 class="font-display text-xl font-bold text-slate-900 uppercase tracking-tight leading-snug mb-3 group-hover:text-ion-blue transition-colors duration-200">
                   {post.data.title}
                 </h2>
@@ -69,9 +60,7 @@ const formatDate = (date: Date) =>
               </div>
               <div class="mt-auto flex items-center gap-3">
                 <div class="read-bar w-6 h-px bg-ion-blue transition-all duration-300"></div>
-                <span class="font-ui text-xs text-ion-blue font-semibold tracking-[0.15em] uppercase">
-                  Read
-                </span>
+                <span class="label-overline text-xs">Read</span>
               </div>
             </a>
           ))}
@@ -81,19 +70,15 @@ const formatDate = (date: Date) =>
   </main>
 
   <footer class="border-t border-slate-400/70 py-8 px-6">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-      <span class="font-display text-xs font-bold tracking-[0.2em] text-slate-600 uppercase">Hexosoft</span>
-      <p class="font-ui text-xs text-slate-600">
-        &copy; {new Date().getFullYear()} Hexosoft. All rights reserved.
-      </p>
+    <div class="page-container flex flex-col sm:flex-row items-center justify-between gap-3">
+      <span class="footer-brand">Hexosoft</span>
+      <p class="footer-text">&copy; {new Date().getFullYear()} Hexosoft. All rights reserved.</p>
     </div>
   </footer>
 </Layout>
 
 <style>
-  .post-card:hover .read-bar {
-    width: 2rem;
-  }
+  .post-card:hover .read-bar { width: 2rem; }
 
   .post-card {
     opacity: 0;
