@@ -17,7 +17,7 @@
 
 /* ─── Dot-grid background ───────────────────────────────────── */
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(79, 195, 247, 0.18) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(79, 195, 247, 0.26) 1.25px, transparent 1.25px);
   background-size: 28px 28px;
 }
 
