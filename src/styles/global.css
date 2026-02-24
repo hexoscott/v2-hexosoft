@@ -3,7 +3,7 @@
 /* ─── Design tokens ─────────────────────────────────────────── */
 @theme {
   --color-drift-silver: #dde3ea; /* drift silver — site background */
-  --color-ion-blue: #4fc3f7;     /* ion blue — primary foreground / accent */
+  --color-ion-blue: #0ea5e9;     /* ion blue — primary foreground / accent */
 }
 
 :root {
@@ -17,7 +17,7 @@
 
 /* ─── Dot-grid background ───────────────────────────────────── */
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(79, 195, 247, 0.26) 1.25px, transparent 1.25px);
+  background-image: radial-gradient(circle, rgba(14, 165, 233, 0.26) 1.25px, transparent 1.25px);
   background-size: 28px 28px;
 }
 
