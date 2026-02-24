@@ -233,7 +233,7 @@ const stages = [
           <h2 class="section-heading">Contact</h2>
         </div>
 
-        <div class="section-indent max-w-2xl">
+        <div class="section-indent max-w-4xl">
 
           <!-- Form -->
           <div id="contact-form-wrapper">
@@ -246,24 +246,26 @@ const stages = [
             >
               <input type="hidden" name="form-name" value="contact" />
 
-              <div class="space-y-2">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" id="name" name="name" required placeholder="Your name"
-                  class="form-input h-10" />
-              </div>
+              <div class="flex flex-col md:flex-row gap-6">
+                <div class="space-y-2 flex-1">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" id="name" name="name" required placeholder="Your name"
+                    class="form-input h-10" />
+                </div>
 
-              <div class="space-y-2">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" id="email" name="email" required placeholder="you@example.com"
-                  class="form-input h-10" />
-              </div>
+                <div class="space-y-2 flex-1">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" id="email" name="email" required placeholder="you@example.com"
+                    class="form-input h-10" />
+                </div>
 
-              <div class="space-y-2">
-                <label for="phone" class="form-label">
-                  Phone <span class="text-slate-400 font-normal">(optional)</span>
-                </label>
-                <input type="tel" id="phone" name="phone" placeholder="+44 7700 000000"
-                  class="form-input h-10" />
+                <div class="space-y-2 flex-1">
+                  <label for="phone" class="form-label">
+                    Phone <span class="text-slate-400 font-normal">(optional)</span>
+                  </label>
+                  <input type="tel" id="phone" name="phone" placeholder="+44 7700 000000"
+                    class="form-input h-10" />
+                </div>
               </div>
 
               <div class="space-y-2">
