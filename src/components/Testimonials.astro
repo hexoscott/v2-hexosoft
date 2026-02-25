@@ -1,15 +1,10 @@
 ---
 const testimonials = [
   {
-    quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — replace this with a real testimonial.',
-    name: 'Client Name',
-    title: 'Job Title, Company',
-  },
-  {
-    quote: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat — replace this with a real testimonial.',
-    name: 'Client Name',
-    title: 'Job Title, Company',
-  },
+    quote: "Scott is an experienced and highly capable solution builder and developer. He not only delivers requirements on time and to specification, but is also able to anticipate and interpret complex needs as they arise. \n\nHe’s great to work with – personable, dependable, and consistently reliable. I’ve worked very closely with Scott for over five years and would trust him to deliver projects on behalf of my business at any time.",
+    name: 'Max Revitt',
+    title: 'CEO, Revitt',
+  }
 ];
 
 const gridClass = testimonials.length === 1
@@ -28,7 +23,7 @@ const gridClass = testimonials.length === 1
     <div class={gridClass}>
       {testimonials.map((t) => (
         <blockquote class="testimonial-card card-surface flex flex-col gap-8">
-          <p class="font-display text-xl font-semibold text-slate-900 leading-snug">
+          <p class="font-display text-xl font-semibold text-slate-900 leading-snug whitespace-pre-line">
             &ldquo;{t.quote}&rdquo;
           </p>
           <footer class="mt-auto flex items-center gap-4">
