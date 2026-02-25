@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<Layout title="Thank you — Hexosoft" description="Your message has been received.">
+  <div class="dot-grid fixed inset-0 pointer-events-none" aria-hidden="true"></div>
+
+  <Nav />
+
+  <main class="pt-16 min-h-screen flex flex-col justify-center px-6">
+    <div class="page-container">
+      <div class="section-indent">
+        <div
+          class="absolute left-0 md:left-6 top-1/4 bottom-1/4 w-px"
+          style="background: linear-gradient(to bottom, transparent, var(--color-ion-blue) 40%, var(--color-ion-blue) 60%, transparent);"
+          aria-hidden="true"
+        ></div>
+
+        <p class="label-overline mb-6">Message received</p>
+        <h1 class="font-display font-extrabold text-slate-900 uppercase leading-[0.88] tracking-tight mb-8"
+            style="font-size: clamp(2.5rem, 6vw, 5rem);">
+          Thank you.
+        </h1>
+        <p class="font-ui text-sm leading-relaxed text-slate-700 max-w-md mb-10">
+          We've received your message and will be in touch shortly.
+        </p>
+        <a href="/" class="btn-secondary">Back to home</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-400/70 py-8 px-6">
+    <div class="page-container flex flex-col sm:flex-row items-center justify-between gap-3">
+      <span class="footer-brand flex items-center gap-2">
+        <img src="/v2_H_simple.svg" alt="" aria-hidden="true" class="h-6 w-auto" />
+        Hexosoft
+      </span>
+      <p class="footer-text">&copy; {new Date().getFullYear()} Hexosoft. All rights reserved.</p>
+    </div>
+  </footer>
+</Layout>

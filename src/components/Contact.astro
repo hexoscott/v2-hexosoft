@@ -9,88 +9,48 @@
     </div>
 
     <div class="section-indent max-w-4xl">
+      <form
+        name="contact"
+        method="POST"
+        action="/thank-you"
+        data-netlify="true"
+        class="space-y-6"
+      >
+        <input type="hidden" name="form-name" value="contact" />
 
-      <!-- Form -->
-      <div id="contact-form-wrapper">
-        <form
-          id="contact-form"
-          name="contact"
-          method="POST"
-          data-netlify="true"
-          class="space-y-6"
-        >
-          <input type="hidden" name="form-name" value="contact" />
-
-          <div class="flex flex-col md:flex-row gap-6">
-            <div class="space-y-2 flex-1">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" id="name" name="name" required placeholder="Your name"
-                class="form-input h-10" />
-            </div>
-
-            <div class="space-y-2 flex-1">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" id="email" name="email" required placeholder="you@example.com"
-                class="form-input h-10" />
-            </div>
-
-            <div class="space-y-2 flex-1">
-              <label for="phone" class="form-label">
-                Phone <span class="text-slate-400 font-normal">(optional)</span>
-              </label>
-              <input type="tel" id="phone" name="phone" placeholder="+44 7700 000000"
-                class="form-input h-10" />
-            </div>
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="space-y-2 flex-1">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name"
+              class="form-input h-10" />
           </div>
 
-          <div class="space-y-2">
-            <label for="message" class="form-label">Message</label>
-            <textarea id="message" name="message" required rows="5"
-              placeholder="Tell us about your problem..."
-              class="form-input py-2 resize-none"></textarea>
+          <div class="space-y-2 flex-1">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" required placeholder="you@example.com"
+              class="form-input h-10" />
           </div>
 
-          <button type="submit" class="btn-primary cursor-pointer">
-            Send Message
-          </button>
-        </form>
-      </div>
+          <div class="space-y-2 flex-1">
+            <label for="phone" class="form-label">
+              Phone <span class="text-slate-400 font-normal">(optional)</span>
+            </label>
+            <input type="tel" id="phone" name="phone" placeholder="+44 7700 000000"
+              class="form-input h-10" />
+          </div>
+        </div>
 
-      <!-- Thank you (shown after submission) -->
-      <div id="contact-thankyou" class="hidden py-12 flex flex-col gap-6">
-        <h3 class="font-display text-2xl font-bold text-slate-900 uppercase">Thank you</h3>
-        <p class="font-ui text-sm text-slate-700 leading-relaxed max-w-sm">
-          Your message has been received. We'll be in touch shortly.
-        </p>
-      </div>
+        <div class="space-y-2">
+          <label for="message" class="form-label">Message</label>
+          <textarea id="message" name="message" required rows="5"
+            placeholder="Tell us about your problem..."
+            class="form-input py-2 resize-none"></textarea>
+        </div>
 
+        <button type="submit" class="btn-primary cursor-pointer">
+          Send Message
+        </button>
+      </form>
     </div>
   </div>
 </section>
-
-<script>
-  const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  const wrapper = document.getElementById('contact-form-wrapper');
-  const thankyou = document.getElementById('contact-thankyou');
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-    const params = new URLSearchParams();
-    formData.forEach((value, key) => params.append(key, value.toString()));
-
-    try {
-      await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: params.toString(),
-      });
-    } catch {
-      // Submission may still succeed even if fetch throws (e.g. redirect)
-    } finally {
-      wrapper?.classList.add('hidden');
-      thankyou?.classList.remove('hidden');
-    }
-  });
-</script>
