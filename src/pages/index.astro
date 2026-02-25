@@ -2,6 +2,25 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 
+const testimonials = [
+  {
+    quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — replace this with a real testimonial.',
+    name: 'Client Name',
+    title: 'Job Title, Company',
+  },
+  {
+    quote: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat — replace this with a real testimonial.',
+    name: 'Client Name',
+    title: 'Job Title, Company',
+  },
+];
+
+const testimonialGridClass = testimonials.length === 1
+  ? 'card-grid max-w-xl'
+  : testimonials.length === 2
+    ? 'card-grid md:grid-cols-2'
+    : 'card-grid md:grid-cols-3';
+
 const stages = [
   {
     number: '01',
@@ -188,34 +207,21 @@ const stages = [
           <p class="label-overline mb-3">In their words</p>
           <h2 class="section-heading">What businesses say</h2>
         </div>
-        <div class="card-grid md:grid-cols-2">
-
-          <blockquote class="testimonial-card card-surface flex flex-col gap-8">
-            <p class="font-display text-xl font-semibold text-slate-900 leading-snug">
-              &ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — replace this with a real testimonial.&rdquo;
-            </p>
-            <footer class="mt-auto flex items-center gap-4">
-              <div class="w-8 h-px bg-ion-blue flex-shrink-0"></div>
-              <div>
-                <p class="font-display text-sm font-semibold text-slate-900 uppercase tracking-wide">Client Name</p>
-                <p class="font-ui text-xs text-slate-600 mt-0.5">Job Title, Company</p>
-              </div>
-            </footer>
-          </blockquote>
-
-          <blockquote class="testimonial-card card-surface flex flex-col gap-8">
-            <p class="font-display text-xl font-semibold text-slate-900 leading-snug">
-              &ldquo;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat — replace this with a real testimonial.&rdquo;
-            </p>
-            <footer class="mt-auto flex items-center gap-4">
-              <div class="w-8 h-px bg-ion-blue flex-shrink-0"></div>
-              <div>
-                <p class="font-display text-sm font-semibold text-slate-900 uppercase tracking-wide">Client Name</p>
-                <p class="font-ui text-xs text-slate-600 mt-0.5">Job Title, Company</p>
-              </div>
-            </footer>
-          </blockquote>
-
+        <div class={testimonialGridClass}>
+          {testimonials.map((t) => (
+            <blockquote class="testimonial-card card-surface flex flex-col gap-8">
+              <p class="font-display text-xl font-semibold text-slate-900 leading-snug">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <footer class="mt-auto flex items-center gap-4">
+                <div class="w-8 h-px bg-ion-blue flex-shrink-0"></div>
+                <div>
+                  <p class="font-display text-sm font-semibold text-slate-900 uppercase tracking-wide">{t.name}</p>
+                  <p class="font-ui text-xs text-slate-600 mt-0.5">{t.title}</p>
+                </div>
+              </footer>
+            </blockquote>
+          ))}
         </div>
       </div>
     </section>
