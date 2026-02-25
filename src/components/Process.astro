@@ -1,0 +1,66 @@
+---
+const stages = [
+  {
+    number: '01',
+    title: 'Understand',
+    description:
+      'We start by listening. Tell us where things are hard, slow, or just not working. Together we explore your problem from every angle before a single line of code is considered.',
+  },
+  {
+    number: '02',
+    title: 'Agree',
+    description:
+      "We find the simplest solution that actually solves your problem — nothing more. We put it in front of you, talk it through, and only move forward when you're confident it's right.",
+  },
+  {
+    number: '03',
+    title: 'Deliver',
+    description:
+      'We build it, then we work alongside you to make it stick. Real feedback shapes the result. You stay involved until the software works the way your business needs it to.',
+  },
+];
+---
+
+<section id="process" class="page-section">
+  <div class="page-container">
+    <div class="section-header">
+      <p class="label-overline mb-3">How we work</p>
+      <h2 class="section-heading">Our process</h2>
+    </div>
+    <div class="card-grid md:grid-cols-3">
+      {stages.map((stage) => (
+        <article class="feature-card group card-surface">
+          <span class="block font-display font-light leading-none text-slate-400 group-hover:text-ion-blue/30 transition-colors duration-300 mb-6 select-none"
+                style="font-size: 4rem;">
+            {stage.number}
+          </span>
+          <div class="accent-bar w-8 h-px bg-ion-blue mb-6 transition-all duration-300"></div>
+          <h3 class="font-display text-base font-semibold text-slate-900 uppercase tracking-widest mb-3">
+            {stage.title}
+          </h3>
+          <p class="font-ui text-sm text-slate-700 leading-relaxed group-hover:text-slate-900 transition-colors duration-300">
+            {stage.description}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .feature-card:hover .accent-bar { width: 3rem; }
+
+  .feature-card {
+    opacity: 0;
+    animation: fade-up 0.55s ease forwards;
+  }
+
+  .feature-card:nth-child(1) { animation-delay: 0.05s; }
+  .feature-card:nth-child(2) { animation-delay: 0.15s; }
+  .feature-card:nth-child(3) { animation-delay: 0.25s; }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>

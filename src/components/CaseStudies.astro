@@ -1,0 +1,84 @@
+---
+const achievements = [
+  {
+    label: 'Web-based ERP / MRP',
+    detail: 'Replaced MS Access entirely with a purpose-built system covering orders, materials, and production — accessible from anywhere in the business on desktop/mobile/tablet via any web browser.',
+  },
+  {
+    label: 'Barcoded stock control',
+    detail: "Every product on the factory floor gets a barcode. Goods out and stock movements are scanned in real time on Android scanners — no more manual counts or mystery shortages. Prefix know what product to load onto which vehicle and see it in real time.",
+  },
+  {
+    label: 'Delivery visibility',
+    detail: "Live delivery scheduling and printable reports, so the team always knows what's arriving, what's shipped, and what's outstanding.",
+  },
+  {
+    label: 'Modern customer paperwork',
+    detail: 'Order confirmations and delivery notes generated automatically — consistent, branded, and sent without manual effort.',
+  },
+  {
+    label: 'Production insights & scheduling',
+    detail: 'A clear view of capacity, work in progress, and what needs to happen next — turning scheduling from guesswork into a simple process. Each process on the factory floor mapped out and capacity managed.',
+  },
+  {
+    label: 'Ancillary software',
+    detail: 'Simple tools to convert files for CNC machines between different systems.',
+  },
+];
+---
+
+<section id="case-studies" class="page-section">
+  <div class="page-container">
+    <div class="section-header">
+      <p class="label-overline mb-3">Case Study</p>
+      <h2 class="section-heading">Prefix</h2>
+    </div>
+    <div class="border-t border-slate-400/50 card-grid lg:grid-cols-5">
+
+      <!-- Challenge -->
+      <div class="case-block lg:col-span-2 bg-drift-silver p-8 md:p-10">
+        <p class="label-overline tracking-[0.15em] mb-5">The challenge</p>
+        <p class="font-display text-2xl font-semibold text-slate-900 leading-snug mb-6">
+          A manufacturing business outgrowing a system held together with spreadsheets and an Access database.
+        </p>
+        <p class="font-ui text-sm text-slate-700 leading-relaxed">
+          Prefix had built their operation on Microsoft Access. It had served its purpose — but as the business grew, the cracks showed. Stock was hard to trust, the factory floor ran on paper, customers received inconsistent documentation, and production scheduling was a daily guessing game. They needed a platform built around how they actually work.
+        </p>
+      </div>
+
+      <!-- What we achieved -->
+      <div class="case-block lg:col-span-3 bg-drift-silver p-8 md:p-10">
+        <p class="label-overline tracking-[0.15em] mb-5">What we achieved</p>
+        <ul class="space-y-0 divide-y divide-slate-400/40">
+          {achievements.map((item) => (
+            <li class="flex gap-5 py-5">
+              <span class="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full border border-ion-blue flex items-center justify-center">
+                <span class="w-1.5 h-1.5 rounded-full bg-ion-blue"></span>
+              </span>
+              <div>
+                <p class="font-display text-sm font-semibold text-slate-900 uppercase tracking-wide mb-1">{item.label}</p>
+                <p class="font-ui text-sm text-slate-700 leading-relaxed">{item.detail}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .case-block {
+    opacity: 0;
+    animation: fade-up 0.55s ease forwards;
+  }
+
+  .case-block:nth-child(1) { animation-delay: 0.1s; }
+  .case-block:nth-child(2) { animation-delay: 0.22s; }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
