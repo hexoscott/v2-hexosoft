@@ -1,0 +1,151 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+
+const colorsCopy = `HEXOSOFT BRAND COLORS
+
+Primary Tokens (src/styles/global.css)
+- Drift Silver: #DDE3EA
+  Token: --color-drift-silver
+  Usage: Main page background and card surfaces.
+
+- Ion Blue: #0EA5E9
+  Token: --color-ion-blue
+  Usage: Primary accent, links, CTA highlights, dividers.
+
+Additional Explicit Hex Values Used in Source
+- #1D293D (logo fill, public/v2_H_simple.svg and public/favicon.svg)
+- #075985 (hero gradient start, src/pages/index.astro)
+- #0F172A (blog prose headings/strong text, src/pages/blog/[slug].astro)
+- #334155 (blog prose body/list text, src/pages/blog/[slug].astro)
+- #475569 (scroll indicator gradient, src/pages/index.astro)
+
+Tailwind Slate Tokens Used in Classes (Tailwind v4)
+- slate-100: oklch(96.8% 0.007 247.896)
+- slate-300: oklch(86.9% 0.022 252.894)
+- slate-400: oklch(70.4% 0.04 256.788)
+- slate-500: oklch(55.4% 0.046 257.417)
+- slate-600: oklch(44.6% 0.043 257.281)
+- slate-700: oklch(37.2% 0.044 257.287)
+- slate-800: oklch(27.9% 0.041 260.031)
+- slate-900: oklch(20.8% 0.042 265.755)
+
+Alpha/Overlay Colors in Use
+- rgba(14, 165, 233, 0.26) (dot-grid)
+- rgba(221, 227, 234, 0.82) (nav backdrop)`;
+
+const fontsCopy = `HEXOSOFT BRAND FONTS
+
+Display Font
+- Family: Syne
+- Fallback: sans-serif
+- Loaded Weights: 400, 600, 700, 800
+- Token: --font-display
+- Utility Class: .font-display
+- Usage: Headlines, section headings, logo wordmark text.
+
+Body/UI Font
+- Family: IBM Plex Sans
+- Fallback: sans-serif
+- Loaded Weights: 300, 400, 500, 600 (+ italic 300)
+- Tokens: --font-body, --font-ui
+- Utility Class: .font-ui
+- Usage: Body copy, UI labels, buttons, navigation, form text.
+
+Global Body Typography
+- body { font-family: var(--font-body); font-size: 17px; line-height: 1.6; }`;
+
+const logosCopy = `HEXOSOFT LOGOS
+
+Primary Logo Asset
+- File: /public/v2_H_simple.svg
+- URL Path: /v2_H_simple.svg
+- Type: Monochrome symbol
+- Fill Color: #1D293D
+- Typical Usage: Navbar/footer mark and compact brand icon.
+
+Favicons
+- /public/favicon.svg
+- /public/favicon.ico
+
+Example Usage
+<img src="/v2_H_simple.svg" alt="Hexosoft logo" class="h-7 w-auto" />
+
+Logo Handling Guidance
+- Keep original aspect ratio; set width OR height, not both fixed.
+- Use clear space around the mark.
+- Do not recolor, stretch, rotate, or add effects.
+- Prefer neutral or drift-silver backgrounds for best contrast.`;
+---
+
+<Layout title="Hexosoft Branding" description="Branding reference for Hexosoft colors, fonts, and logos.">
+  <div class="dot-grid fixed inset-0 pointer-events-none" aria-hidden="true"></div>
+  <Nav />
+
+  <main class="page-section pt-28">
+    <div class="page-container section-indent space-y-16">
+      <section>
+        <p class="label-overline mb-4">Brand System</p>
+        <h1 class="section-heading mb-6">Branding Reference</h1>
+        <p class="font-ui text-base text-slate-700 max-w-3xl">
+          This page documents the exact colors, fonts, and logo assets currently used across the site, with copy-ready descriptions for reuse.
+        </p>
+      </section>
+
+      <section class="space-y-6">
+        <h2 class="font-display text-2xl font-bold uppercase tracking-tight text-slate-900">Colors</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="card-surface border border-slate-300">
+            <div class="h-16 border border-slate-300 mb-3" style="background:#dde3ea;"></div>
+            <p class="font-display text-sm text-slate-900 uppercase tracking-wide">Drift Silver</p>
+            <p class="font-ui text-sm text-slate-700">#DDE3EA</p>
+          </div>
+          <div class="card-surface border border-slate-300">
+            <div class="h-16 border border-slate-300 mb-3" style="background:#0ea5e9;"></div>
+            <p class="font-display text-sm text-slate-900 uppercase tracking-wide">Ion Blue</p>
+            <p class="font-ui text-sm text-slate-700">#0EA5E9</p>
+          </div>
+          <div class="card-surface border border-slate-300">
+            <div class="h-16 border border-slate-300 mb-3" style="background:#1d293d;"></div>
+            <p class="font-display text-sm text-slate-900 uppercase tracking-wide">Logo Navy</p>
+            <p class="font-ui text-sm text-slate-700">#1D293D</p>
+          </div>
+          <div class="card-surface border border-slate-300">
+            <div class="h-16 border border-slate-300 mb-3" style="background:linear-gradient(to right, #075985, #0ea5e9);"></div>
+            <p class="font-display text-sm text-slate-900 uppercase tracking-wide">Hero Gradient</p>
+            <p class="font-ui text-sm text-slate-700">#075985 -> #0EA5E9</p>
+          </div>
+        </div>
+        <textarea id="colors-copy" readonly class="w-full min-h-[22rem] form-input p-4">{colorsCopy}</textarea>
+      </section>
+
+      <section class="space-y-6">
+        <h2 class="font-display text-2xl font-bold uppercase tracking-tight text-slate-900">Fonts</h2>
+        <div class="card-surface border border-slate-300 space-y-4">
+          <p class="font-display text-3xl text-slate-900">Syne display sample</p>
+          <p class="font-ui text-lg text-slate-700">IBM Plex Sans UI/body sample for readable paragraph and interface text.</p>
+        </div>
+        <textarea id="fonts-copy" readonly class="w-full min-h-[18rem] form-input p-4">{fontsCopy}</textarea>
+      </section>
+
+      <section class="space-y-6">
+        <h2 class="font-display text-2xl font-bold uppercase tracking-tight text-slate-900">Logos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="card-surface border border-slate-300">
+            <p class="font-display text-sm text-slate-900 uppercase tracking-wide mb-3">Primary Mark on Light</p>
+            <div class="bg-white border border-slate-300 p-6">
+              <img src="/v2_H_simple.svg" alt="Hexosoft logo mark" class="h-16 w-auto" />
+            </div>
+          </div>
+          <div class="card-surface border border-slate-300">
+            <p class="font-display text-sm text-slate-900 uppercase tracking-wide mb-3">Primary Mark on Dark</p>
+            <div class="bg-slate-900 border border-slate-300 p-6">
+              <img src="/v2_H_simple.svg" alt="Hexosoft logo mark" class="h-16 w-auto bg-white/95 p-2" />
+            </div>
+          </div>
+        </div>
+        <textarea id="logos-copy" readonly class="w-full min-h-[16rem] form-input p-4">{logosCopy}</textarea>
+      </section>
+    </div>
+  </main>
+</Layout>
